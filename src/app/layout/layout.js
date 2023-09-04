@@ -1,9 +1,11 @@
 import { connect } from 'react-redux'
 import { dispatch, setDimensions } from '../../redux/actions'
-import React, { useLayoutEffect } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 
 const Layout = (props) => {
   const { dispatch, setDimensions, dimensions, developerMode } = props
+
+  const [ active, setActive ] = useState(null)
 
   useLayoutEffect(() => {
     if (!dimensions) {
@@ -15,7 +17,7 @@ const Layout = (props) => {
 
       setDimensions(dimensions)
     }
-    
+
     window.addEventListener('resize', handleResize)
     
     return () => {
@@ -25,8 +27,7 @@ const Layout = (props) => {
 
   useLayoutEffect(() => {
     if (developerMode) {
-      // TODO
-      // Add a label or watermark or something.
+      setActive('Active')
     }
   }, [ dispatch ])
 
@@ -41,8 +42,9 @@ const Layout = (props) => {
   }
 
   return (
-    <div>
+    <div id='app-container'>
       <h1>🎉 Hello Electron App! 🎉</h1>
+      <div id='dev-mode'>Developer mode: {active}</div>
     </div>
   )
 }
