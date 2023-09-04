@@ -1,12 +1,11 @@
 import React from 'react'
+import reducer from '../redux/reducers/reducer'
+
+import Layout from './layout/layout'
 
 const App = () => {
-
-  return (
-    <div>
-      <h1>🎉 Hello Electron App! 🎉</h1>
-    </div>
-  )
+  return <Layout />
 }
 
+export const Reducer = reducer
 export default App

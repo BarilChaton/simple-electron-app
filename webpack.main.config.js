@@ -1,10 +1,13 @@
+const path = require('path')
+
 module.exports = {
-  /**
-   * This is the main entry point for your application, it's the first file
-   * that runs in the main process.
-   */
   entry: './src/main.js',
-  // Put your normal webpack config below here
+  resolve: {
+    alias: {
+      'reduxConstants': path.resolve(__dirname, 'src/redux/constants'),
+			'reduxActions': path.resolve(__dirname, 'src/redux/actions'),
+    }
+  },
   module: {
     rules: require('./webpack.rules'),
   },
