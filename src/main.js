@@ -13,11 +13,11 @@ const createWindow = ({ width, height }) => {
     frame: true,
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+      nodeIntegration: true
     },
   });
 
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-
   mainWindow.webContents.openDevTools();
 }
 
@@ -30,7 +30,7 @@ app.whenReady().then(() => {
   const { width, height } = primaryDisplay.size
 
   createWindow({ width, height });
-})
+});
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {

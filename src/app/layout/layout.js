@@ -2,6 +2,8 @@ import { connect } from 'react-redux'
 import { dispatch, setDimensions } from '../../redux/actions'
 import React, { useLayoutEffect, useState } from 'react'
 
+import CalendarWrapper from '../components/calendarWrapper'
+
 const Layout = (props) => {
   const { dispatch, setDimensions, dimensions, developerMode } = props
 
@@ -42,8 +44,8 @@ const Layout = (props) => {
   }
 
   return (
-    <div id='app-container'>
-      <h1>🎉 Hello Electron App! 🎉</h1>
+    <div className='app-container'>
+      <CalendarWrapper />
       <div id='dev-mode'>Developer mode: {active}</div>
     </div>
   )
